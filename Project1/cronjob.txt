@@ -1,0 +1,7 @@
+
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# m h  dom mon dow   command
+27 16 * * * /home/sayanti/aws_resource_tracker.sh >> /home/sayanti/myfolder/resource_tracking_results.txt 2>&1
+

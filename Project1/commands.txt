@@ -1,0 +1,28 @@
+#### install aws cli in ubuntu terminal
+sudo apt update ===> make sure system's package is up to date
+sudo apt install awscli ===> Install aws cli using apt package
+aws configure =====> give access key and secret access key to login as an iam user
+aws s3 ls ====> checking whether cli working or not
+
+#### Create and run the shell script
+vim aws_resource_tracker.sh ===> created a shell file that contains aws cli commands to show different aws resource usages
+chmod 777 aws_resource_tracker.sh ==> give all the permissions to run the file
+./aws_resource_tracker.sh  ===> run the shell script and show the output
+./aws_resource_tracker.sh | less ===> This command would allow to navigate through the outputs
+cp aws_resource_tracker.sh aws_resource_tracker.txt ===> saves the content of the .sh file to a text file
+
+#### Create and run the cronjob that would run aws_resource_tracker.sh everyday at a particular time and save the output as a text file
+crontab -e ====> open the cronjob editor. 1st time when we run, it would ask for preferred editor. chose vim as familiar with this.
+sudo service cron start ===> To start the cron job
+ps aux | grep cron ===> To check the status of the job. should output something like this.
+   root      2348  0.0  0.0  12344   944 ?        Ss   16:25   0:00 /usr/sbin/cron -P
+   sayanti   2353  0.0  0.0  12064  1272 tty1     S    16:26   0:00 grep --color=auto cron
+
+27 16 * * * /home/sayanti/aws_resource_tracker.sh >> /home/sayanti/myfolder/resource_tracking_results.txt 2>&1 ==> cronjob that is saving the result to a text file
+                                                                        once the job ran successfully this test file would be generated in the specified path
+crontab -l      ===> check the content of the cron job
+cat resource_tracking_results.txt ===> check the content of the result
+crontab -l > cronjob.txt =====> copy the content of the cron job to a text file
+
+ 
+
