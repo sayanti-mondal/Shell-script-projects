@@ -1,0 +1,49 @@
++ echo 'Print list of s3 buckets'
+Print list of s3 buckets
++ aws s3 ls
+2024-08-20 21:01:19 aws-backend-state-sayanti-234
+2024-05-14 22:00:05 dev-applications-backend-state-sayanti
+2024-08-20 17:24:01 terraform-backend-state-sayanti-123
+
++ echo 'print ids of ec2 instances'
+print ids of ec2 instances
++ aws ec2 describe-instances
++ jq '.Reservations[].Instances[].InstanceId'
+"i-0ff03ddf4fcd2d018"
+
++ echo 'print list of lambda functions'
+print list of lambda functions
++ aws lambda list-functions
+{
+    "Functions": []
+}
+
++ echo 'print the list of IAM users'
+print the list of IAM users
++ aws iam list-users
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "my_iam_user",
+            "UserId": "AIDA5FTZEOJZLSNM4X7NT",
+            "Arn": "arn:aws:iam::905418404466:user/my_iam_user",
+            "CreateDate": "2024-05-14T14:51:06Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "my_user",
+            "UserId": "AIDA5FTZEOJZGV4U6Q5BS",
+            "Arn": "arn:aws:iam::905418404466:user/my_user",
+            "CreateDate": "2024-05-13T05:55:31Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "sayanti-aws",
+            "UserId": "AIDA5FTZEOJZFNLLZJU2N",
+            "Arn": "arn:aws:iam::905418404466:user/sayanti-aws",
+            "CreateDate": "2024-04-15T14:57:09Z",
+            "PasswordLastUsed": "2024-10-04T06:54:22Z"
+        }
+    ]
+}
